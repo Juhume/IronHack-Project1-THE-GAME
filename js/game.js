@@ -52,11 +52,11 @@ var Game = {
   },
 
   gameOver: function() {
-    // this.stop();
+    this.stop();
 
-    // if (confirm("Has palmado, ya sabes lo que toca... RULETA!")) {
-    //   this.reset();
-    // }
+    if (confirm("Has palmado, ya sabes lo que toca... RULETA!")) {
+       this.reset();
+     }
   },
  
   reset: function() {
@@ -67,11 +67,8 @@ var Game = {
     this.obstacles = [];
     this.score = 0;
   },
-  //chequea si ha sucedido una colisión
   isCollision: function() {
-    // colisiones genéricas
-    // (p.x + p.w > o.x && o.x + o.w > p.x && p.y + p.h > o.y && o.y + o.h > p.y )
-    // esto chequea que el personaje no estén en colisión con cualquier obstáculo
+   
     return this.obstacles.some(obstacle => {
       return (
         this.player.x + this.player.w >= obstacle.x &&
@@ -95,7 +92,7 @@ var Game = {
   clear: function() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
   },
-  //dibuja todos los assets del juego
+
   drawAll: function() {
     this.background.draw();
     this.player.draw(this.framesCounter);
@@ -104,7 +101,7 @@ var Game = {
     });
     this.drawTimer();
   },
-  //mueve todos los objetos del escenario, el fondo, el jugador y los obstáculos
+
   moveAll: function() {
     this.background.move();
     this.player.move();
