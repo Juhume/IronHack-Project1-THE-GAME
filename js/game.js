@@ -1,4 +1,3 @@
-
 var Game = {
   canvas: undefined,
   ctx: undefined,
@@ -66,13 +65,13 @@ var Game = {
     clearInterval(this.interval);
   },
 
-  gameOver: function() {
-    this.stop();
+  // gameOver: function() {
+  //   this.stop();
 
-    if (confirm(`You got ${this.score - 2} points, not bad at all! But you can't get rid of... THE ROULETTE!`)) {
-       this.reset();
-     }
-  },
+  //   if (confirm(`You got ${this.score - 2} points, not bad at all! But you can't get rid of... THE ROULETTE!`)) {
+  //      this.reset();
+  //    }
+  // },
  
   reset: function() {
     this.background = new Background(this.canvas.width, this.canvas.height, this.ctx);
@@ -85,10 +84,11 @@ var Game = {
   isCollision: function() {
    
     return this.obstacles.some(obstacle => {
-      return (
+      if (
         this.player.x + this.player.w >= obstacle.x &&
         this.player.x < obstacle.x + obstacle.w &&
         this.player.y + (this.player.h - 20) >= obstacle.y
+
       );
     });
   },

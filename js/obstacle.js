@@ -10,10 +10,6 @@ class Obstacle {
 
   this.img = new Image();
   this.img.src = "img/ezgif-4-db8d1f5abe5b.jpg";
-
-  
-
-
 }
 
 
