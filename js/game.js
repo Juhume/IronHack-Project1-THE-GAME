@@ -8,34 +8,48 @@ var Game = {
     RIGHT: 39,
     SPACE: 32,
     LEFT: 37,
+    PAUSE: 80
   },
   init: function(canvasId) {
     this.canvas = document.getElementById(canvasId);
     this.ctx = this.canvas.getContext("2d");
+    this.w = window.innerWidth;
+    this.h = window.innerHeight;
+    this.w2 = this.w / 2;
+    this.h2 = this.h / 2;
+    this.canvas.setAttribute("width", `${this.w}px`);
+    this.canvas.setAttribute("height", `${this.h}px`);
 
     ScoreBoard.init(this.ctx);
 
     this.start();
   },
   start: function() {
-    this.fps = 60;
+    this.fps = 65;
 
     this.reset();
 
     this.interval = setInterval(() => {
       this.clear();
+      this.drawAll();
+      this.score += 1;
 
       this.framesCounter++;
 
-      if (this.framesCounter > 900) {
+      if (this.framesCounter > 100) {
         this.framesCounter = 0;
       }
 
-      if (this.framesCounter % 70 === 0) {
+      if (this.framesCounter % 66 === 0) {
         this.generateObstacle();
       }
 
-      this.score += 0.01;
+       if (this.score > 3000) {
+        this.moveAll(this.score);
+      }
+  
+
+      this.score += 1;
 
       this.moveAll();
       this.drawAll();
@@ -45,8 +59,9 @@ var Game = {
       if (this.isCollision()) {
         this.gameOver();
       }
-    }, 1300 / this.fps);
+    }, 1000 / this.fps);
   },
+ 
   stop: function() {
     clearInterval(this.interval);
   },
@@ -54,7 +69,7 @@ var Game = {
   gameOver: function() {
     this.stop();
 
-    if (confirm("Has palmado, ya sabes lo que toca... RULETA!")) {
+    if (confirm(`You got ${this.score - 2} points, not bad at all! But you can't get rid of... THE ROULETTE!`)) {
        this.reset();
      }
   },
@@ -111,6 +126,6 @@ var Game = {
   },
   //pinta el marcador
   drawTimer: function() {
-    this.scoreBoard.update(this.timer);
+    this.scoreBoard.update(this.score);
   }
 };

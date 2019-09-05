@@ -17,7 +17,6 @@ class Player {
     this.img.frames = 3;
     this.img.frameIndex = 0;
 
-    // medidas de la imagen a representar en el canvas
     this.w = 50;
     this.h = 75;
 
@@ -29,8 +28,7 @@ class Player {
   }
 
   draw(framesCounter) {
-    // Documentación drawImage:
-    // https://developer.mozilla.org/es/docs/Web/API/CanvasRenderingContext2D/drawImage
+
     this.ctx.drawImage(
       this.img,
       this.img.frameIndex * Math.floor(this.img.width / this.img.frames),
@@ -63,11 +61,9 @@ class Player {
 
   
   animateImg(framesCounter) {
-    // se va cambiando el frame. Cuanto mayor es el módulo, mas lento se mueve el personaje
     if (framesCounter % 5 === 0) {
       this.img.frameIndex += 1;
 
-      // Si el frame es el último, se vuelve al primero
       if (this.img.frameIndex > 2) this.img.frameIndex = 0;
     }
   }

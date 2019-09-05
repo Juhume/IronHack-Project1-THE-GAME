@@ -6,21 +6,24 @@ class Obstacle {
     this.dx = 10;
     this.x = w;
     this.y = playerY + playerH - this.h - 20;
-  }
 
-  draw() {
-    this.ctx.fillStyle = "white";
-    this.ctx.fillRect(this.x, this.y, this.w, this.h);
-  }
+
+  this.img = new Image();
+  this.img.src = "img/ezgif-4-db8d1f5abe5b.jpg";
+
+  
+
+
+}
+
+
+draw() {
+  this.ctx.drawImage(this.img, this.x, this.y);
+}
+
 
   move() {
     this.x -= this.dx;
   }
 
-}
-
-class Brains extends Obstacle {
-  constructor(w, playerY, playerH, ctx) { 
-  super(w, playerY, playerH, ctx,"img/51d1qVhmAmL.jpg")
-  };
 }
