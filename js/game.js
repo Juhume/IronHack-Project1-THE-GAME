@@ -65,13 +65,13 @@ var Game = {
     clearInterval(this.interval);
   },
 
-  // gameOver: function() {
-  //   this.stop();
+  gameOver: function() {
+     this.stop();
 
-  //   if (confirm(`You got ${this.score - 2} points, not bad at all! But you can't get rid of... THE ROULETTE!`)) {
-  //      this.reset();
-  //    }
-  // },
+     if (confirm(`You got ${this.score - 2} points, not bad at all! But you can't get rid of... THE ROULETTE!`)) {
+        this.reset();
+     }
+   },
  
   reset: function() {
     this.background = new Background(this.canvas.width, this.canvas.height, this.ctx);
