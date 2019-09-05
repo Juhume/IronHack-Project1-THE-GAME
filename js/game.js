@@ -68,7 +68,7 @@ var Game = {
   gameOver: function() {
     this.stop();
 
-    if (confirm(`You got ${this.score - 2} points, not bad at all! But you can't get rid of... THE ROULETTE!`))
+    if (confirm(`You got ${this.score - 2} points, not bad at all! But you can't get rid of... THE PERREAPP!`))
     window.location.href = "https://perre-app.github.io/roulette/";
     {
       this.reset();

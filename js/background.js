@@ -9,7 +9,7 @@ class Background {
     this.x = 0;
     this.y = 0;
 
-    this.dx = 10;
+    this.dx = 5;
   }
 
   draw() {
@@ -27,6 +27,7 @@ class Background {
       this.w,
       this.h
     );
+      this.ctx.fillText("But hey Ironhacker! Don't forget to smile 😁", this.w / 4.5, this.h / 9.6);
   }
 
   move() {
