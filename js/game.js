@@ -7,7 +7,7 @@ var Game = {
     RIGHT: 39,
     SPACE: 32,
     LEFT: 37,
-    PAUSE: 80
+    P: 80
   },
   init: function(canvasId) {
     this.canvas = document.getElementById(canvasId);
@@ -66,12 +66,14 @@ var Game = {
   },
 
   gameOver: function() {
-     this.stop();
+    this.stop();
 
-     if (confirm(`You got ${this.score - 2} points, not bad at all! But you can't get rid of... THE ROULETTE!`)) {
-        this.reset();
-     }
-   },
+    if (confirm(`You got ${this.score - 2} points, not bad at all! But you can't get rid of... THE ROULETTE!`))
+    window.location.href = "https://perre-app.github.io/roulette/";
+    {
+      this.reset();
+    }
+  },
  
   reset: function() {
     this.background = new Background(this.canvas.width, this.canvas.height, this.ctx);
@@ -84,7 +86,7 @@ var Game = {
   isCollision: function() {
    
     return this.obstacles.some(obstacle => {
-      if (
+      return (
         this.player.x + this.player.w >= obstacle.x &&
         this.player.x < obstacle.x + obstacle.w &&
         this.player.y + (this.player.h - 20) >= obstacle.y
