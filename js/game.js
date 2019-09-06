@@ -2,12 +2,13 @@ var Game = {
   canvas: undefined,
   ctx: undefined,
   fps: 60,
+  pause: false,
   scoreBoard: undefined,
   keys: {
     RIGHT: 39,
     SPACE: 32,
     LEFT: 37,
-    P: 80
+    PAUSE: 80
   },
   init: function(canvasId) {
     this.canvas = document.getElementById(canvasId);
@@ -24,8 +25,7 @@ var Game = {
     this.start();
   },
   start: function() {
-    this.fps = 65;
-
+    this.fps = 60;
     this.reset();
 
     this.interval = setInterval(() => {
@@ -35,15 +35,15 @@ var Game = {
 
       this.framesCounter++;
 
-      if (this.framesCounter > 100) {
+      if (this.framesCounter > 300) {
         this.framesCounter = 0;
       }
 
-      if (this.framesCounter % 66 === 0) {
+      if (this.framesCounter % 200 === 0) {
         this.generateObstacle();
       }
 
-       if (this.score > 3000) {
+       if (this.score > 10000) {
         this.moveAll(this.score);
       }
   
@@ -68,7 +68,7 @@ var Game = {
   gameOver: function() {
     this.stop();
 
-    if (confirm(`You got ${this.score - 2} points, not bad at all! But you can't get rid of... THE PERREAPP!`))
+    if (confirm(`You got ${this.score - 1} points, not bad at all! But you can't get rid of... THE PERREAPP!`))
     window.location.href = "https://perre-app.github.io/roulette/";
     {
       this.reset();
@@ -103,7 +103,24 @@ var Game = {
   generateObstacle: function() {
     this.obstacles.push(
       new Obstacle(this.canvas.width, this.player.y0, this.player.h, this.ctx)
-    );
+    )
+    
+    if (this.score > 2500) {
+    this.obstacles.push(
+      new Obstacle2(this.canvas.width, this.player.y0, this.player.h, this.ctx)
+    )
+  }
+
+  if (this.score > 5000) {
+    this.obstacles.push(
+      new Obstacle3(this.canvas.width, this.player.y0, this.player.h, this.ctx)
+    )
+  }
+  if (this.score > 7500) {
+    this.obstacles.push(
+      new Obstacle4(this.canvas.width, this.player.y0, this.player.h, this.ctx)
+    )
+  }
   },
 
   clear: function() {
@@ -111,6 +128,7 @@ var Game = {
   },
 
   drawAll: function() {
+    
     this.background.draw();
     this.player.draw(this.framesCounter);
     this.obstacles.forEach(function(obstacle) {
@@ -126,7 +144,7 @@ var Game = {
       obstacle.move();
     });
   },
-  //pinta el marcador
+
   drawTimer: function() {
     this.scoreBoard.update(this.score);
   }

@@ -49,13 +49,16 @@ class Player {
     document.onkeydown = function(event) {
       if (event.keyCode === this.keys.SPACE && this.y == this.y0) {
         this.y -= 5;
-        this.vy -= 10;
+        this.vy -= 11;
       } if (event.keyCode === this.keys.RIGHT && this.y == this.y0) {
         this.x += 25;
       }
       if (event.keyCode === this.keys.LEFT && this.y == this.y0) {
         this.x -= 25;
       }
+      
+
+
     }.bind(this);
   }
 
@@ -69,7 +72,7 @@ class Player {
   }
 
   move() {
-    var gravity = 0.5;
+    var gravity = 0.37;
 
     if (this.y >= this.y0) {
       this.vy = 1;

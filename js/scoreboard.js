@@ -6,6 +6,6 @@ let ScoreBoard = {
   },
   update: function (score) {
     this.ctx.fillStyle = "brown";
-    this.ctx.fillText(Math.floor(score), 1800, 80);
+    this.ctx.fillText(Math.floor(score), 1750, 80);
   }
 };

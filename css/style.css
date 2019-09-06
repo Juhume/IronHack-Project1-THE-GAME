@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
+html {
+  background-image: url('https://thumbs.gfycat.com/FarOldElephantbeetle-small.gif'); 
+  background-repeat: no-repeat;
+
+}
 
 .main {
-  background-image: url('https://thumbs.gfycat.com/FarOldElephantbeetle-small.gif'); 
-  background-repeat:repeat;
   text-align: center;
   width: 100vw;
   height: 100vh;
@@ -45,9 +48,20 @@
 }
 
 .text2 {
+  /* background-image: linear-gradient(to left, brown, blue, green, orange, red);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;   */
+
+  color: rgba(255, 255, 255, 0.959);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 60px;
+  margin-top: 15px;
+}
+
+.text3 {
 margin-top: 40px;
 font-size: 70px;
-color: rgba(183, 187, 209, 0.938);
+color: rgb(153, 187, 222);
 margin-bottom: 20px;
 font-family: 'Montserrat', sans-serif;
 letter-spacing: 3px;
